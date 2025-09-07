@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Personal Reminder</string>
+    <string name="welcome_msg">Welcome to your Personal Reminder App!</string>
+    <string name="default_reminder">No reminders set yet.</string>
+    <string name="update_reminder_button">Update Reminder</string>
+    <string name="updated_reminder">Don\'t forget your meeting at 3 PM!</string>
+    <string name="app_icon_description">Personal Reminder App Logo</string>
+</resources>
