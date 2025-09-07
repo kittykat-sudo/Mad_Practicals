@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.FitnessTracker">
+
+        <!-- Main Task - Fitness Tracking -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:taskAffinity="com.example.fitnesstracker.main"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".WorkoutActivity"
+            android:taskAffinity="com.example.fitnesstracker.main"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Separate Task - Settings/Profile -->
+        <activity
+            android:name=".SummaryActivity"
+            android:taskAffinity="com.example.fitnesstracker.summary"
+            android:launchMode="singleTask"
+            android:allowTaskReparenting="true" />
+
+        <!-- Separate Task - Data Management -->
+        <activity
+            android:name=".DataPersistenceActivity"
+            android:taskAffinity="com.example.fitnesstracker.data"
+            android:launchMode="singleInstance" />
+
+        <!-- Another Separate Task - Secondary features -->
+        <activity
+            android:name=".SecondActivity"
+            android:taskAffinity="com.example.fitnesstracker.secondary"
+            android:launchMode="singleTop" />
+
+        <!-- Compose Activity in main task -->
+        <activity
+            android:name=".ComposeActivity"
+            android:taskAffinity="com.example.fitnesstracker.main" />
+
+    </application>
+
+</manifest>
