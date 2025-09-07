@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/white">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,19 +13,64 @@
         android:text="Fitness Tracker - Home"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/purple_500"
         android:layout_marginBottom="32dp" />
 
+    <!-- Existing buttons -->
     <Button
         android:id="@+id/btnToWorkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go to Workout"
-        android:layout_marginBottom="16dp" />
+        android:text="🏃‍♂️ Go to Workout"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_500" />
 
     <Button
         android:id="@+id/btnToSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go to Summary" />
+        android:text="📊 Go to Summary"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/teal_200" />
+
+    <!-- Missing buttons that need to be added -->
+    <Button
+        android:id="@+id/btnToSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⚙️ Second Activity (Back Button Demo)"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_700" />
+
+    <Button
+        android:id="@+id/btnToCompose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎨 Compose Activity"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/teal_700" />
+
+    <Button
+        android:id="@+id/btnToDataPersistence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="💾 Data Persistence Demo"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_200" />
+
+    <!-- Footer text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Track • Train • Transform"
+        android:textSize="14sp"
+        android:textColor="@color/purple_700"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-medium" />
 
 </LinearLayout>

@@ -12,6 +12,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.compose.ui.text.style.TextAlign
 
 class ComposeActivity : ComponentActivity() {
     private var userEmail by mutableStateOf("")
@@ -242,7 +245,6 @@ fun UserCard(
 
 @Composable
 fun CounterButton() {
-    // State that will trigger recomposition when changed
     var counter by remember { mutableStateOf(0) }
 
     Column(
@@ -252,7 +254,6 @@ fun CounterButton() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Display counter value
         Text(
             text = "Counter: $counter",
             style = MaterialTheme.typography.headlineLarge,
@@ -260,7 +261,6 @@ fun CounterButton() {
             color = MaterialTheme.colorScheme.primary
         )
 
-        // Row of buttons for different operations
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -279,16 +279,18 @@ fun CounterButton() {
                 Text("Increment")
             }
 
-            // Decrement button
+            // Decrement button - FIXED: Use correct icon
             Button(
                 onClick = { counter-- },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.secondary
                 )
             ) {
-                Icon(
-                    imageVector = Icons.Default.Remove,
-                    contentDescription = "Decrement"
+                // Option 1: Use a text "-" instead of icon
+                Text(
+                    text = "−",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text("Decrement")
@@ -306,28 +308,6 @@ fun CounterButton() {
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text("Reset Counter")
-        }
-
-        // Counter status indicator
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = when {
-                    counter > 0 -> Color.Green.copy(alpha = 0.1f)
-                    counter < 0 -> Color.Red.copy(alpha = 0.1f)
-                    else -> Color.Gray.copy(alpha = 0.1f)
-                }
-            )
-        ) {
-            Text(
-                text = when {
-                    counter > 0 -> "✅ Positive count"
-                    counter < 0 -> "❌ Negative count"
-                    else -> "⚪ Zero count"
-                },
-                modifier = Modifier.padding(16.dp),
-                style = MaterialTheme.typography.bodyLarge
-            )
         }
     }
 }
@@ -356,4 +336,31 @@ fun CenteredButtonList() {
 @Composable
 fun FitnessTrackerTheme(content: @Composable () -> Unit) {
     MaterialTheme(content = content)
+}
+
+@Composable
+fun FixedText() {
+    Text(
+        text = "Hello",
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .wrapContentWidth(Alignment.CenterHorizontally), // Centers horizontally
+        fontWeight = FontWeight.Bold, // Makes text bold
+        style = MaterialTheme.typography.headlineMedium
+    )
+}
+
+// Alternative approach using textAlign
+@Composable
+fun FixedTextAlternative() {
+    Text(
+        text = "Hello",
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center, // Alternative centering method
+        style = MaterialTheme.typography.headlineMedium
+    )
 }
