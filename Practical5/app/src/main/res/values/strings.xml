@@ -1,3 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">notetaking</string>
+    <!-- Existing strings -->
+    <string name="app_name">Note Taking</string>
+    <string name="notes_list_description">List of your notes</string>
+    <string name="note_item_description">Note: %1$s</string>
+    <string name="add_note">Add Note</string>
+    <string name="pick_contact">Pick Contact</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="launch_external_app">Launch External App</string>
+    <string name="note_title_hint">Note Title</string>
+    <string name="note_content_hint">Note Content</string>
+    <string name="save_note">Save Note</string>
+    <string name="note_id_label">Note ID: %1$s</string>
+    <string name="pdf_viewer">PDF Viewer</string>
+    <string name="document_reader">Document Reader</string>
+    <string name="message_details">Message Details</string>
+    <string name="notes">Notes</string>
+
+    <!-- ADD THESE TWO MISSING STRINGS -->
+    <string name="battery_monitor">Battery Monitor</string>
+    <string name="battery_icon">Battery Icon</string>
+
 </resources>

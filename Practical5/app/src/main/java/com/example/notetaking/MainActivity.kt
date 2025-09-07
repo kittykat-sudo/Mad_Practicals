@@ -1,9 +1,14 @@
 package com.example.notetaking
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -13,35 +18,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.notetaking.ui.theme.NotetakingTheme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            NotetakingTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+class MainActivity : AppCompatActivity() {
+
+    private fun openNoteDetail(noteId: String) {
+        val intent = Intent(this, NoteDetailActivity::class.java).apply {
+            putExtra("NOTE_ID", noteId)
+            putExtra("NOTE_TITLE", "Sample Note") // Optional additional data
         }
+        startActivity(intent)
     }
-}
+    private fun sendEmailFeedback() {
+        val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("feedback@noteapp.com"))
+            putExtra(Intent.EXTRA_SUBJECT, "App Feedback")
+            putExtra(Intent.EXTRA_TEXT, "Please share your feedback...")
+        }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NotetakingTheme {
-        Greeting("Android")
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send feedback via..."))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "No email app found", Toast.LENGTH_SHORT).show()
+        }
     }
 }
